@@ -124,4 +124,8 @@ console.log("Folio generado: " + miFolio);
 - No requiere instalación de dependencias.
 
 ---
+## Captura del formulario
 
+![Formulario](img/uno.png)
+![Formulario](img/dos.png)
+![Formulario](img/tres.png)
