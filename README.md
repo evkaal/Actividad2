@@ -39,13 +39,18 @@ A continuación se muestran algunos ejemplos de cómo utilizar las funciones de 
 Evalúa si la cadena de texto ingresada tiene un formato válido de correo electrónico.
 
 ```javascript
-let esValido = Correo("ejemplo@gmail.com");
-
-console.log(esValido);
-// Retorna: true
+function Correo(correo){
+    //Creacion de una constante que almacene una expresión usando el metodo .test()
+    //El cual responde con un booleano, si el texto tiene el formato correcto enotonces 
+    //se convierte en true y retorna la función.
+    const regular = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ ;
+    return regular.test(correo);
+}
 ```
 
 ---
+
+
 
 ## 2. Validación de contraseña (PIN numérico)
 
@@ -55,10 +60,10 @@ Valida que la contraseña:
 - Tenga un máximo de 6 dígitos.
 
 ```javascript
-let passValida = validarPassword("123456");
-
-console.log(passValida);
-// Retorna: true
+function validarPassword(password) {
+    const regex = /^\d{1,6}$/;
+    return regex.test(password);
+}
 ```
 
 ---
@@ -68,24 +73,57 @@ console.log(passValida);
 Calcula la edad exacta de una persona a partir de su fecha de nacimiento.
 
 ```javascript
-let edadCliente = calcularEdad("2003-10-30");
+function esMayorDeEdad(fechaNacimiento) {
+    const edad = calcularEdad(fechaNacimiento);
+    return edad >= 18;
+}
 
-console.log("El cliente tiene: " + edadCliente + " años");
 ```
 
 ---
 
-## 4. Funciones de negocio
+## 4. longitud
+
+verfica la longitud de una cadena
+
+```javascript
+function validarLongitud(numero, maxLongitud) {
+    // Convertimos a string por si mandan un tipo number
+    let textoNum = numero.toString();
+    return textoNum.length <= maxLongitud;
+}
+
+```
+
+---
+## 5. Solo letras
+
+verifica que dentro de la cadena solo esten puras letras y no cualquier otro caracter
+
+```javascript
+
+function Letras(texto) {
+    // Acepta letras mayúsculas, minúsculas, espacios y vocales acentuadas
+    const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+    return regex.test(texto);
+}
+```
+
+---
+## 6. Funciones de negocio
 
 ### Calcular total de lavandería
 
 Calcula el costo del servicio aplicando automáticamente un **10% de descuento** cuando el peso supera los **10 kg**.
 
 ```javascript
-let totalCosto = calcularTotalLavanderia(12, 20);
-
-console.log("Total a cobrar: $" + totalCosto);
-// Retorna: 216
+function calcularTotalLavanderia(kilos, precioPorKilo) {
+    let total = kilos * precioPorKilo;
+    if (kilos > 10) {
+        total = total * 0.90; // 10% de descuento
+    }
+    return total;
+}
 ```
 
 ---
@@ -95,11 +133,14 @@ console.log("Total a cobrar: $" + totalCosto);
 Genera un identificador único para el ticket utilizando el nombre del cliente.
 
 ```javascript
-let miFolio = generarFolioTicket("Eduardo");
-
-console.log("Folio generado: " + miFolio);
-// Ejemplo de salida:
-// TKT-EDU-5432
+function generarFolioTicket(nombreCliente) {
+    let prefijo = "CLI";
+    if (nombreCliente && nombreCliente.length >= 3) {
+        prefijo = nombreCliente.substring(0, 3).toUpperCase();
+    }
+    const aleatorio = Math.floor(Math.random() * 9000) + 1000; 
+    return `TKT-${prefijo}-${aleatorio}`;
+}
 ```
 
 ---
