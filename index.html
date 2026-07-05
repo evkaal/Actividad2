@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="css/Styles.css">
+    <script src="js/utileria.js"></script>
+</head>
+<body>
+    
+  <div class="Contenedor">
+    <h2>Registro de Usuario</h2>
+    <form id="Registro">
+        <div class="grupo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" required>
+
+        </div>
+
+        <div class="grupo">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" required>
+
+        </div>
+
+        <div class="grupo">
+            <label for="fechaNacimiento">Fecha de nacimiento</label>
+            <input type="date" id="fechaNacimiento" required>
+
+        </div>
+
+        <div class="grupo">
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" placeholder="ejemplo@gmail.com" required>
+        </div>
+
+        <div class="grupo">
+        <label for="contraseña">Contraseña de maximo 6 números</label>
+        <input type="password" id="contraseña" name="contraseña" placeholder="">
+        </div>
+
+        <div class="grupo">
+            <label for="Kilos">Kilos de ropa a lavar:</label>
+            <input type="number" id="Kilos" required>
+        </div>
+
+        <button type="button" onclick="ProcesarFormulario"> Registrar y calcular</button>
+
+    </form>
+    <a href="login.html">Ir a login</a>
+  </div>
+
+  <div id="miModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <h3>Resultados</h3>
+        <p id="mensajeModal"></p>
+    </div>
+</div>
+
+
+</body>
+</html>
