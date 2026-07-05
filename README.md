@@ -1,4 +1,4 @@
-# Librería de Validaciones JS - Proyecto Lavandería
+#Nombre: Jiménez Mendoza Eduardo 
 
 ## ¿Qué problema resuelve?
 Esta librería proporciona un conjunto de utilidades ligeras en JavaScript puro (Vanilla JS) para validar los datos de entrada en formularios web de registro. Específicamente, está adaptada para el módulo de atención de la **Lavandería EL Lavadero**, resolviendo el problema de ingresos de datos erróneos (como correos mal formateados, contraseñas que no cumplen el formato o edades incorrectas) y automatiza el cálculo de precios y folios de tickets para agilizar el servicio al cliente sin depender de frameworks pesados.
@@ -6,7 +6,7 @@ Esta librería proporciona un conjunto de utilidades ligeras en JavaScript puro 
 ## Instalación
 Para implementar esta librería en tu proyecto, no requieres herramientas de Node ni dependencias. Solo descarga el archivo `utileria.js` y agrégalo en tu documento HTML dentro de la etiqueta `<head>`:
 
-```html
+
 <script src="js/utileria.js"></script>
 
 
