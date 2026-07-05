@@ -150,10 +150,10 @@ button:hover {
 
 /* Esto nos permitira mantener la pagina en modo responsive */
 @media screen and (max-width: 768px) {
-    .contenedor-principal {
+    .contenedor {
         flex-direction: column; 
     }
-    .mitad-azul, .mitad-amarilla {
+    .mitad-izquierdo, .mitad-derecho{
         width: 100%;
         box-sizing: border-box;
         padding: 30px;

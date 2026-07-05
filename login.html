@@ -11,17 +11,19 @@
 <div class="contenedor">
     <div class="mitad-izquierdo"><h2>Iniciar Sesión</h2></div>
 
-    <div class="mitad-derecho"><form id="loginForm">
-        <div class="grupo">
+    <div class="mitad-derecho">
+        <form id="loginForm">
+            <div class="grid-formulario"> <div class="grupo">
             <label for="correo">Correo Electrónico:</label>
-            <input type="text" id="correo" required>
+            <input type="text" id="correo" placeholder="ejemplo@gmail.com">
         </div>
         <div class="grupo">
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" required>
+            <label for="password" >Contraseña:</label>
+            <input type="password" id="password" placeholder="contraseña" required>
         </div>
         <button type="button" onclick="iniciarSesion()">Entrar</button>
-    </form>
+    </form></div>
+       
     <br>
     <a href="index.html">Volver al Formulario</a>
 </div></div>
