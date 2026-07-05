@@ -39,67 +39,122 @@ A continuación se muestran algunos ejemplos de cómo utilizar las funciones de 
 Evalúa si la cadena de texto ingresada tiene un formato válido de correo electrónico.
 
 ```javascript
-let esValido = Correo("ejemplo@gmail.com");
-
-console.log(esValido);
-// Retorna: true
+function Correo(correo){
+    //Creacion de una constante que almacene una expresión usando el metodo .test()
+    //El cual responde con un booleano, si el texto tiene el formato correcto enotonces 
+    //se convierte en true y retorna la función.
+    const regular = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ ;
+    return regular.test(correo);
+}
 ```
 
 ---
 
-## 2. Validación de contraseña (PIN numérico)
+## 2. Solo letras
 
-Valida que la contraseña:
-
-- Contenga únicamente números.
-- Tenga un máximo de 6 dígitos.
+verifica que dentro de la cadena solo esten puras letras y no cualquier otro caracter
 
 ```javascript
-let passValida = validarPassword("123456");
 
-console.log(passValida);
-// Retorna: true
+function Letras(texto) {
+    // Acepta letras mayúsculas, minúsculas, espacios y vocales acentuadas
+    const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+    return regex.test(texto);
+}
+```
+
+---
+## 3. longitud
+
+verfica la longitud de una cadena
+
+```javascript
+function validarLongitud(numero, maxLongitud) {
+    // Convertimos a string por si mandan un tipo number
+    let textoNum = numero.toString();
+    return textoNum.length <= maxLongitud;
+}
+
 ```
 
 ---
 
-## 3. Cálculo de edad
+## 4. Cálculo de edad
 
 Calcula la edad exacta de una persona a partir de su fecha de nacimiento.
 
 ```javascript
-let edadCliente = calcularEdad("2003-10-30");
+function esMayorDeEdad(fechaNacimiento) {
+    const edad = calcularEdad(fechaNacimiento);
+    return edad >= 18;
+}
 
-console.log("El cliente tiene: " + edadCliente + " años");
+```
+
+---
+## 5. Verficar si es mayor de edad
+
+Verifica si es mayor de edad o no
+
+```javascript
+function esMayorDeEdad(fechaNacimiento) {
+    const edad = calcularEdad(fechaNacimiento);
+    return edad >= 18;
+}
 ```
 
 ---
 
-## 4. Funciones de negocio
+## 6. Validación de contraseña 
+
+Valida que la contraseña:
+
+- Contenga números.
+- Contenga letras (mayusculas y minusculas).
+- Contenga caracter especial.
+- Tenga un minimo de 8 caracteres.
+
+```javascript
+function validarPassword(password) {
+     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_\-+=])[A-Za-z\d@$!%*?&.#_\-+=]{8,}$/;
+    return regex.test(password);
+}
+
+```
+
+---
+
+## 6. Funciones de negocio
 
 ### Calcular total de lavandería
 
 Calcula el costo del servicio aplicando automáticamente un **10% de descuento** cuando el peso supera los **10 kg**.
 
 ```javascript
-let totalCosto = calcularTotalLavanderia(12, 20);
-
-console.log("Total a cobrar: $" + totalCosto);
-// Retorna: 216
+function calcularTotalLavanderia(kilos, precioPorKilo) {
+    let total = kilos * precioPorKilo;
+    if (kilos > 10) {
+        total = total * 0.90; // 10% de descuento
+    }
+    return total;
+}
 ```
 
 ---
 
 ### Generar folio de ticket
 
-Genera un identificador único para el ticket utilizando el nombre del cliente.
+Genera un identificador único para el ticket utilizando el nombre del usuario.
 
 ```javascript
-let miFolio = generarFolioTicket("Eduardo");
-
-console.log("Folio generado: " + miFolio);
-// Ejemplo de salida:
-// TKT-EDU-5432
+function generarFolioTicket(nombreCliente) {
+    let prefijo = "CLI";
+    if (nombreCliente && nombreCliente.length >= 3) {
+        prefijo = nombreCliente.substring(0, 3).toUpperCase();
+    }
+    const aleatorio = Math.floor(Math.random() * 9000) + 1000; 
+    return `TKT-${prefijo}-${aleatorio}`;
+}
 ```
 
 ---
@@ -109,8 +164,11 @@ console.log("Folio generado: " + miFolio);
 | Función | Descripción |
 |----------|-------------|
 | `Correo(correo)` | Valida el formato de un correo electrónico. |
-| `validarPassword(password)` | Verifica que el PIN sea numérico y tenga como máximo 6 dígitos. |
+| `Letras(texto)` | Valida que acepte letras mayusculas y minusculas y acentos. |
+| `validarLongitud(numero, maxLongitud)` |Valida longitud de numero. |
 | `calcularEdad(fechaNacimiento)` | Calcula la edad a partir de una fecha de nacimiento. |
+| `esMayorEdad(fechaNacimiento)` | Valida si es mayor de edad. |
+| `validarPassword(password)` | Valida que sea un minimo de 8 caracteres y que incluya letras Mayusculas-Minusculas y algún caracter especial. |
 | `calcularTotalLavanderia(kilos, precioKilo)` | Calcula el costo total aplicando descuentos cuando corresponde. |
 | `generarFolioTicket(nombre)` | Genera un folio único para los tickets de servicio. |
 
@@ -124,4 +182,12 @@ console.log("Folio generado: " + miFolio);
 - No requiere instalación de dependencias.
 
 ---
+## Captura del formulario
+
+![Formulario](img/uno.png)
+![Formulario](img/dos.png)
+![Formulario](img/tres.png)
+
+
+## Video demostrativo
 
