@@ -1,7 +1,7 @@
 #Nombre: Jiménez Mendoza Eduardo 
 
 ## ¿Qué problema resuelve?
-Esta librería proporciona un conjunto de utilidades ligeras en JavaScript puro (Vanilla JS) para validar los datos de entrada en formularios web de registro.  Resolviendo el problema de ingresos de datos erróneos (como correos mal formateados, contraseñas que no cumplen el formato o edades incorrectas) y automatiza el cálculo de precios y folios de tickets para agilizar el servicio al cliente sin depender de frameworks pesados.
+Esta librería proporciona un conjunto de utilidades ligeras en JavaScript puro, para validar los datos de entrada en formularios web de registro.  Resolviendo el problema de ingresos de datos erróneos (como correos mal formateados, contraseñas que no cumplen el formato o edades incorrectas) y automatiza el cálculo de precios y folios de tickets para agilizar el servicio al cliente sin depender de frameworks pesados.
 
 ## Instalación
 Para implementar esta librería en algun proyecto no se requiere herramientas de Node ni dependencias. Solo descargar el archivo `utileria.js` y agrégarlo en el documento HTML dentro de la etiqueta `<head>`:
@@ -17,9 +17,10 @@ A continuación se muestran ejemplos prácticos de cómo invocar las funciones p
 1. Validación de Correo Electrónico:
 Evalúa si la cadena de texto ingresada tiene una estructura válida de email.
 
-let esValido = Correo("ejemplo@gmail.com");
+'''
+<let esValido = Correo("ejemplo@gmail.com");>
 console.log(esValido); // Retorna: true
-
+'''
 2. Validación de Contraseña de Seguridad (PIN numérico):
 Valida que la contraseña contenga únicamente números y tenga un límite máximo de 6 dígitos, tal como lo exige el formulario.
 
