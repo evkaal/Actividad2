@@ -44,15 +44,16 @@ function esMayorDeEdad(fechaNacimiento) {
     return edad >= 18;
 }
 
-// FUNCIÓN 5: VALIDACIÓN DE CONTRASEÑA TOMANDO EN CUENTA QUE SEA COMO MAXIMO 6 NÚMEROS
+// FUNCIÓN 5: VALIDACIÓN DE CONTRASEÑA TOMANDO EN CUENTA QUE SEA MINIMO DE 8 CARACTERES
+// TENDRA LETRAS (MAYUSCULAS y minusculas), NUMEROS, CARACTER ESPECIAL
 
 function validarPassword(password) {
-    const regex = /^\d{1,6}$/;
+     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_\-+=])[A-Za-z\d@$!%*?&.#_\-+=]{8,}$/;
     return regex.test(password);
 }
 
 
-// --- Sección Libre ---
+
  
 //FUNCIÓN QUE CALCULA EL TOTAL A PAGAR DE UN SERVICIO DE LAVANDERIA
 // ADICIONALMENTE SE LE APLICA UN DESCUENTO
@@ -66,9 +67,7 @@ function calcularTotalLavanderia(kilos, precioPorKilo) {
 }
 
 //FUNCIÓN QUE GENERA UN FOLIO PARA EL TICKET UTILIZANDO EL NOMBRE DEL USUARIO
-/**
- * Genera un folio único para el ticket basado en el nombre del cliente.
- */
+
 function generarFolioTicket(nombreCliente) {
     let prefijo = "CLI";
     if (nombreCliente && nombreCliente.length >= 3) {
