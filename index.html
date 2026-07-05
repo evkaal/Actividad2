@@ -10,46 +10,67 @@
 </head>
 <body>
     
-  <div class="Contenedor">
-    <h2>Registro de Usuario</h2>
-    <form id="Registro">
-        <div class="grupo">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" required>
+ <div class="contenedor">
+    
+    <div class="mitad-izquierdo">
+        
+    <img src="img/lider.png" alt="usuario" >
+     
+    </div>
 
+    <div class="mitad-derecho">
+        <div class="encabezado-form">
+            <span>¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí!</a></span>
         </div>
+        
+        <h3>Registro de usuario</h3>
+        
+        <form id="Registro">
+            <div class="grid-formulario">
+                
+                <div class="grupo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" required>
+                </div>
 
-        <div class="grupo">
-            <label for="apellidos">Apellidos</label>
-            <input type="text" id="apellidos" required>
+                <div class="grupo">
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" id="apellidos" required>
+                </div>
 
-        </div>
+                <div class="grupo">
+                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                    <input type="date" id="fechaNacimiento" required>
+                </div>
 
-        <div class="grupo">
-            <label for="fechaNacimiento">Fecha de nacimiento</label>
-            <input type="date" id="fechaNacimiento" required>
+               
+               
+                <div class="grupo">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" required>
+                </div>
+                 <div class="grupo">
+                    <label>Folio (Automático)</label>
+                    <input type="text" value="" readonly>
+                </div>
 
-        </div>
 
-        <div class="grupo">
-            <label for="correo">Correo</label>
-            <input type="email" id="correo" placeholder="ejemplo@gmail.com" required>
-        </div>
+                <div class="grupo">
+                    <label for="contraseña">Contraseña (Máx 6 números)</label>
+                    <input type="password" id="contraseña" name="contraseña" placeholder="Introdusca su contraseña">
+                </div>
 
-        <div class="grupo">
-        <label for="contraseña">Contraseña de maximo 6 números</label>
-        <input type="password" id="contraseña" name="contraseña" placeholder="">
-        </div>
+                <div class="grupo">
+                    <label for="Kilos">Kilos de ropa a lavar</label>
+                    <input type="number" id="Kilos" required>
+                </div>
 
-        <div class="grupo">
-            <label for="Kilos">Kilos de ropa a lavar:</label>
-            <input type="number" id="Kilos" required>
-        </div>
+            </div>
 
-        <button type="button" onclick="ProcesarFormulario"> Registrar y calcular</button>
-
-    </form>
-    <a href="login.html">Ir a login</a>
+            <button type="button" onclick="ProcesarFormulario()">Registrar y calcular</button>
+        </form>
+    </div>
+    
   </div>
 
   <div id="miModal" class="modal">
@@ -58,7 +79,7 @@
         <h3>Resultados</h3>
         <p id="mensajeModal"></p>
     </div>
-</div>
+  </div>
 
 
 </body>

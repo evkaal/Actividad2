@@ -1,103 +1,166 @@
 body {
+    margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    padding: 100px;
+    background-color: #e0e4e8; /* Un fondo gris claro para que resalte la tarjeta */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-.Contenedor {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 400px;
-    margin: auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.grupo {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
+/*Este es el diseño del contenedor principal*/
+.contenedor {
+    display: flex;
+    width: 900px;
+    max-width: 95%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
+    overflow: hidden; /* permite que las esquinas salgan un poco redondeado */
+}
+
+
+.mitad-izquierdo {
+    background-color: #2c315c;
+    color: white;
+    width: 40%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+
+.mitad-izquierdo h2 {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.mitad-izquierdo p {
+    font-size: 18px;
+    color: #d1d4e8;
+}
+
+
+.mitad-derecho {
+    background-color: #23bb62;
+    width: 60%;
+    padding: 40px;
+}
+
+.encabezado-form {
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.encabezado-form a {
+    color: #2c315c;
+    text-decoration: underline;
+}
+
+.mitad-derecho h3 {
+    color: #2c315c;
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+/* Acomodo de los inputs en 2 columnas */
+.grid-formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas del mismo tamaño */
+    gap: 15px; /* Espacio entre los campos */
+}
+
+.grupo label {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5px;
+
+}
+
+.grupo input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 2px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.grupo input[readonly] {
+    background-color: #b9ff99; 
+    color: #2c315c;
+    font-weight: bold;
 }
 
 button {
     width: 100%;
-    padding: 10px;
-    background-color: #0056b3;
+    padding: 12px;
+    background-color: #2c315c;
     color: white;
     border: none;
-    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 25px;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 button:hover {
-    background-color: #004494;
+    background-color: #1a1d3d;
 }
 
-/* Estilos de la ventana Modal */
+/* Ventana Modal */
 .modal {
     display: none; 
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.6);
 }
 
 .modal-content {
     background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
+    margin: 10% auto;
+    padding: 25px;
     width: 300px;
     border-radius: 8px;
-    text-align: center;
+    text-align: left;
+    color: #2c315c;
 }
 
 .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     cursor: pointer;
 }
 
 .close:hover {
-    color: black;
+    color: red;
 }
 
-/* --- Diseño Responsive para Móviles --- */
-@media screen and (max-width: 600px) {
-    body {
-        padding: 10px; /* Reducimos el espacio a los lados en pantallas pequeñas */
+/* Esto nos permitira mantener la pagina en modo responsive */
+@media screen and (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column; 
     }
-
-    .Contenedor {
-        width: 100%; 
-        padding: 15px; /* Damos un poco más de espacio interno */
-        box-sizing: border-box; /* Evita que el contenedor se desborde de la pantalla */
-    }
-
-    .modal-content {
-        width: 90%; /* En lugar de 300px fijos, que ocupe casi toda la pantalla */
-        margin: 30% auto; /* Lo bajamos un poco más para que no quede pegado arriba */
+    .mitad-azul, .mitad-amarilla {
+        width: 100%;
         box-sizing: border-box;
+        padding: 30px;
     }
-
-    button {
-        padding: 12px; /* Hacemos el botón un poco más alto para que sea más fácil de tocar con el dedo */
+    /*Con esto pasamos todo a una sola columa en celular*/
+    .grid-formulario {
+        grid-template-columns: 1fr; 
     }
 }
+

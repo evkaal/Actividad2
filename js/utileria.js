@@ -37,6 +37,8 @@ function calcularEdad(fechaNacimiento) {
     return edad;
 }
 
+//COMPROBAR SI LA PERSONA O USUARIO ES MYOR DE EDAD O NO
+
 function esMayorDeEdad(fechaNacimiento) {
     const edad = calcularEdad(fechaNacimiento);
     return edad >= 18;
@@ -52,11 +54,9 @@ function validarPassword(password) {
 
 // --- Sección Libre ---
  
+//FUNCIÓN QUE CALCULA EL TOTAL A PAGAR DE UN SERVICIO DE LAVANDERIA
+// ADICIONALMENTE SE LE APLICA UN DESCUENTO
 
-/**
- * Calcula el total a pagar en un servicio de lavandería.
- * Si pasan de 10 kilos, aplica un 10% de descuento.
- */
 function calcularTotalLavanderia(kilos, precioPorKilo) {
     let total = kilos * precioPorKilo;
     if (kilos > 10) {
@@ -65,6 +65,7 @@ function calcularTotalLavanderia(kilos, precioPorKilo) {
     return total;
 }
 
+//FUNCIÓN QUE GENERA UN FOLIO PARA EL TICKET UTILIZANDO EL NOMBRE DEL USUARIO
 /**
  * Genera un folio único para el ticket basado en el nombre del cliente.
  */
@@ -80,7 +81,7 @@ function generarFolioTicket(nombreCliente) {
 
 // FUNCIÓN PRINCIPAL DE PROCESAMIENTO
 function ProcesarFormulario() {
-    // Captura de los elementos (¡Ahora incluimos el correo!)
+    
     const nombre = document.getElementById('nombre').value;
     const apellidos = document.getElementById('apellidos').value;
     const fechaNacimiento = document.getElementById('fechaNacimiento').value;
