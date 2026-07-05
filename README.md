@@ -1,4 +1,4 @@
-# Librería de Utilidades para Formularios Web
+# ACTIVIDAD 2
 
 **Nombre:** Jiménez Mendoza Eduardo
 
