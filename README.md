@@ -1,4 +1,4 @@
-# ACTIVIDAD 2
+
 
 **Nombre:** Jiménez Mendoza Eduardo
 
@@ -22,7 +22,7 @@ Además, incorpora funciones orientadas al negocio para automatizar el cálculo 
 
 No requiere **Node.js**, gestores de paquetes ni dependencias externas.
 
-Simplemente descarga el archivo `utileria.js` e inclúyelo en tu documento HTML dentro de la etiqueta `<head>`.
+Simplemente se descarga el archivo `utileria.js` y se inclúye en el documento HTML dentro de la etiqueta `<head>`.
 
 ```html
 <script src="js/utileria.js"></script>
@@ -125,6 +125,3 @@ console.log("Folio generado: " + miFolio);
 
 ---
 
-# Licencia
-
-Proyecto desarrollado con fines académicos.
