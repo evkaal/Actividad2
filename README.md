@@ -50,53 +50,7 @@ function Correo(correo){
 
 ---
 
-
-
-## 2. Validación de contraseña (PIN numérico)
-
-Valida que la contraseña:
-
-- Contenga únicamente números.
-- Tenga un máximo de 6 dígitos.
-
-```javascript
-function validarPassword(password) {
-    const regex = /^\d{1,6}$/;
-    return regex.test(password);
-}
-```
-
----
-
-## 3. Cálculo de edad
-
-Calcula la edad exacta de una persona a partir de su fecha de nacimiento.
-
-```javascript
-function esMayorDeEdad(fechaNacimiento) {
-    const edad = calcularEdad(fechaNacimiento);
-    return edad >= 18;
-}
-
-```
-
----
-
-## 4. longitud
-
-verfica la longitud de una cadena
-
-```javascript
-function validarLongitud(numero, maxLongitud) {
-    // Convertimos a string por si mandan un tipo number
-    let textoNum = numero.toString();
-    return textoNum.length <= maxLongitud;
-}
-
-```
-
----
-## 5. Solo letras
+## 2. Solo letras
 
 verifica que dentro de la cadena solo esten puras letras y no cualquier otro caracter
 
@@ -110,6 +64,66 @@ function Letras(texto) {
 ```
 
 ---
+## 3. longitud
+
+verfica la longitud de una cadena
+
+```javascript
+function validarLongitud(numero, maxLongitud) {
+    // Convertimos a string por si mandan un tipo number
+    let textoNum = numero.toString();
+    return textoNum.length <= maxLongitud;
+}
+
+```
+
+---
+
+## 4. Cálculo de edad
+
+Calcula la edad exacta de una persona a partir de su fecha de nacimiento.
+
+```javascript
+function esMayorDeEdad(fechaNacimiento) {
+    const edad = calcularEdad(fechaNacimiento);
+    return edad >= 18;
+}
+
+```
+
+---
+## 5. Verficar si es mayor de edad
+
+Verifica si es mayor de edad o no
+
+```javascript
+function esMayorDeEdad(fechaNacimiento) {
+    const edad = calcularEdad(fechaNacimiento);
+    return edad >= 18;
+}
+```
+
+---
+
+## 6. Validación de contraseña 
+
+Valida que la contraseña:
+
+- Contenga números.
+- Contenga letras (mayusculas y minusculas).
+- Contenga caracter especial.
+- Tenga un minimo de 8 caracteres.
+
+```javascript
+function validarPassword(password) {
+     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_\-+=])[A-Za-z\d@$!%*?&.#_\-+=]{8,}$/;
+    return regex.test(password);
+}
+
+```
+
+---
+
 ## 6. Funciones de negocio
 
 ### Calcular total de lavandería
@@ -130,7 +144,7 @@ function calcularTotalLavanderia(kilos, precioPorKilo) {
 
 ### Generar folio de ticket
 
-Genera un identificador único para el ticket utilizando el nombre del cliente.
+Genera un identificador único para el ticket utilizando el nombre del usuario.
 
 ```javascript
 function generarFolioTicket(nombreCliente) {
@@ -150,8 +164,11 @@ function generarFolioTicket(nombreCliente) {
 | Función | Descripción |
 |----------|-------------|
 | `Correo(correo)` | Valida el formato de un correo electrónico. |
-| `validarPassword(password)` | Verifica que el PIN sea numérico y tenga como máximo 6 dígitos. |
+| `Letras(texto)` | Valida que acepte letras mayusculas y minusculas y acentos. |
+| `validarLongitud(numero, maxLongitud)` |Valida longitud de numero. |
 | `calcularEdad(fechaNacimiento)` | Calcula la edad a partir de una fecha de nacimiento. |
+| `esMayorEdad(fechaNacimiento)` | Valida si es mayor de edad. |
+| `validarPassword(password)` | Valida que sea un minimo de 8 caracteres y que incluya letras Mayusculas-Minusculas y algún caracter especial. |
 | `calcularTotalLavanderia(kilos, precioKilo)` | Calcula el costo total aplicando descuentos cuando corresponde. |
 | `generarFolioTicket(nombre)` | Genera un folio único para los tickets de servicio. |
 
