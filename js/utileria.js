@@ -111,7 +111,7 @@ function ProcesarFormulario() {
     }
 
     if (!validarPassword(contraseña)) {
-        alert("La contraseña no es válida. Debe ingresar únicamente números (máximo 6 dígitos).");
+        alert("La contraseña no es válida. Debe ingresar minimo 8 caracteres entre numeros, letras o simbolo especial.");
         return;
     }
 
