@@ -17,7 +17,7 @@ A continuación se muestran ejemplos prácticos de cómo invocar las funciones p
 1. Validación de Correo Electrónico:
 Evalúa si la cadena de texto ingresada tiene una estructura válida de email.
 
-let esValido = Correo("cliente@correo.com");
+let esValido = Correo("ejemplo@gmail.com");
 console.log(esValido); // Retorna: true
 
 2. Validación de Contraseña de Seguridad (PIN numérico):
