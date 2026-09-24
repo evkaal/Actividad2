@@ -1,7 +1,7 @@
 //FUNCIÓN 1: EN DONDE SE VALIDARA EL CORREO ELECTRONICO
 //USANDO BOOLEAN
 function Correo(correo){
-    //Creacion de una constante que almacene una expresión usando el metodo .test()
+   
     //El cual responde con un booleano, si el texto tiene el formato correcto enotonces 
     //se convierte en true y retorna la función.
     const regular = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ ;
@@ -54,17 +54,6 @@ function validarPassword(password) {
 
 
 
- 
-//FUNCIÓN QUE CALCULA EL TOTAL A PAGAR DE UN SERVICIO DE LAVANDERIA
-// ADICIONALMENTE SE LE APLICA UN DESCUENTO
-
-function calcularTotalLavanderia(kilos, precioPorKilo) {
-    let total = kilos * precioPorKilo;
-    if (kilos > 10) {
-        total = total * 0.90; // 10% de descuento
-    }
-    return total;
-}
 
 //FUNCIÓN QUE GENERA UN FOLIO PARA EL TICKET UTILIZANDO EL NOMBRE DEL USUARIO
 
@@ -78,15 +67,16 @@ function generarFolioTicket(nombreCliente) {
 }
 
 
+
 // FUNCIÓN PRINCIPAL DE PROCESAMIENTO
 function ProcesarFormulario() {
     
     const nombre = document.getElementById('nombre').value;
     const apellidos = document.getElementById('apellidos').value;
     const fechaNacimiento = document.getElementById('fechaNacimiento').value;
-    const correo = document.getElementById('correo').value; // Nueva captura
+    const correo = document.getElementById('correo').value; 
     const contraseña = document.getElementById('contraseña').value;
-    const kilos = document.getElementById('Kilos').value;
+
 
     // Validaciones básicas
     if (!Letras(nombre)) {
@@ -111,39 +101,33 @@ function ProcesarFormulario() {
     }
 
     if (!validarPassword(contraseña)) {
-        alert("La contraseña no es válida. Debe ingresar minimo 8 caracteres entre numeros, letras o simbolo especial.");
+        alert("La contraseña no es válida. Debe ingresar 8 caracteres entre numeros, letras mayusculas o minusculas o simbolo especial.");
         return;
     }
 
-    if (!kilos || kilos <= 0) {
-        alert("Por favor, ingrese una cantidad válida de kilos.");
-        return;
-    }
 
     // Ejecución de la lógica
     const edad = calcularEdad(fechaNacimiento);
     const mayorEdad = esMayorDeEdad(fechaNacimiento) ? "Es mayor de edad." : "Es menor de edad.";
     const folio = generarFolioTicket(nombre);
-    const total = calcularTotalLavanderia(kilos, 20);
+   
 
     // Identificación de los Inputs sin ID
     const listaInputs = document.querySelectorAll('#Registro input');
     const inputFolio = listaInputs[3];
-    const inputTotal = listaInputs[4];
+   
 
     if (inputFolio) {
         inputFolio.value = folio;
     }
-    if (inputTotal) {
-        inputTotal.value = total.toFixed(2);
-    }
+   
 
     // Despliegue de los resultados incluyendo el correo validado
     const mensaje = `
         <strong>Folio generado:</strong> ${folio} <br><br>
         <strong>Correo registrado:</strong> ${correo} <br><br>
         <strong>Edad calculada:</strong> ${edad} años (${mayorEdad}) <br><br>
-        <strong>Total del servicio:</strong> $${total.toFixed(2)}
+       
     `;
     
     document.getElementById('mensajeModal').innerHTML = mensaje;
