@@ -5,50 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/Styles.css">
+    <script src="js/utileria.js"></script>
 </head>
 <body>
 
 <div class="contenedor">
-    <div class="mitad-izquierdo"><h2>Iniciar Sesión</h2></div>
+    <div class="mitad-izquierdo">
+        <div class="contenido-izq">
+            <h2>Acceso</h2>
+            <p>Introduce tus datos validados para entrar al sistema.</p>
+            <div class="circulo-decorativo"></div>
+        </div>
+    </div>
 
     <div class="mitad-derecho">
+        <div class="encabezado-form">
+            <span>¿No tienes cuenta? <a href="index.html">Regístrate aquí!</a></span>
+        </div>
+        
+        <h3>Iniciar Sesión</h3>
+        
         <form id="loginForm">
-            <div class="grid-formulario"> <div class="grupo">
-            <label for="correo">Correo Electrónico:</label>
-            <input type="text" id="correo" placeholder="ejemplo@gmail.com">
+            <div class="grid-formulario">
+                
+                <div class="grupo" style="grid-column: span 2;">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" placeholder="ejemplo@gmail.com" required>
+                    <label id="msjLoginCorreo" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: block;"></label>
+                </div>
+
+                <div class="grupo" style="grid-column: span 2;">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                    <label id="msjLoginPassword" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: block;"></label>
+                </div>
+
+            </div>
+
+            <button type="button" onclick="iniciarSesion()">Entrar</button>
+        </form>
+        
+        <div style="margin-top: 20px; text-align: center;">
+            <a href="index.html" style="color: #139a76; text-decoration: none; font-size: 13px; font-weight: bold;">← Volver al Registro</a>
         </div>
-        <div class="grupo">
-            <label for="password" >Contraseña:</label>
-            <input type="password" id="password" placeholder="contraseña" required>
-        </div>
-        <button type="button" onclick="iniciarSesion()">Entrar</button>
-    </form></div>
-       
-    <br>
-    <a href="index.html">Volver al Formulario</a>
-</div></div>
-    
-    
-
-<script src="js/utileria.js"></script>
-<script>
-    function iniciarSesion() {
-        const correo = document.getElementById('correo').value;
-        const password = document.getElementById('password').value;
-
-        if (!Correo(correo)) {
-            alert("Formato de correo no válido. Ejemplo: ejemplo@gmail.com");
-            return;
-        }
-
-        if (!validarPassword(password)) {
-            alert("La contraseña debe tener minimo de 8 caracteres entre numeros letras y simbolos");
-            return;
-        }
-
-        alert("¡Credenciales válidas! Acceso concedido.");
-    }
-</script>
+    </div>
+</div>
 
 </body>
 </html>

@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
     <link rel="stylesheet" href="css/Styles.css">
     <script src="js/utileria.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     
  <div class="contenedor">
-    
-   
+    <div class="mitad-izquierdo">
+        <div class="contenido-izq">
+            <h2>Bienvenido</h2>
+            <p>Regístrate para generar tu folio automático y calcular tu edad en sistema.</p>
+            <div class="circulo-decorativo"></div>
+        </div>
+    </div>
 
     <div class="mitad-derecho">
         <div class="encabezado-form">
@@ -26,54 +30,53 @@
                 
                 <div class="grupo">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" required>
+                    <input type="text" id="nombre" required placeholder="Tu nombre">
+                    <label id="msjNombre" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: block;"></label>
                 </div>
 
                 <div class="grupo">
                     <label for="apellidos">Apellidos</label>
-                    <input type="text" id="apellidos" required>
+                    <input type="text" id="apellidos" required placeholder="Tus apellidos">
+                    <label id="msjApellidos" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: block;"></label>
                 </div>
 
                 <div class="grupo">
                     <label for="fechaNacimiento">Fecha de nacimiento</label>
                     <input type="date" id="fechaNacimiento" required>
+                    <label id="msjFecha" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: block;"></label>
                 </div>
 
-               
-               
                 <div class="grupo">
                     <label for="correo">Correo Electrónico</label>
-                    <input type="email" id="correo" required>
+                    <input type="email" id="correo" required placeholder="correo@ejemplo.com">
+                    <label id="msjCorreo" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: block;"></label>
                 </div>
-                 <div class="grupo">
-                    <label>Folio (Automático)</label>
-                    <input type="text" value="" readonly>
-                </div>
-
 
                 <div class="grupo">
-                    <label for="contraseña">Contraseña (Máx 8 caracteres)</label>
-                    <input type="password" id="contraseña" name="contraseña" placeholder="Introdusca su contraseña">
+                    <label>Folio (Automático)</label>
+                    <input type="text" value="" readonly placeholder="Autogenerado">
                 </div>
 
-        
+                <div class="grupo">
+                    <label for="contraseña">Contraseña (Mín. 8 caracteres)</label>
+                    <input type="password" id="contraseña" name="contraseña" placeholder="••••••••">
+                    <label id="msjPassword" style="color: #ef4444; font-size: 11px; margin-top: 4px; display: block;"></label>
+                </div>
 
             </div>
 
             <button type="button" onclick="ProcesarFormulario()">Registrar y calcular</button>
         </form>
     </div>
-    
-  </div>
+ </div>
 
-  <div id="miModal" class="modal">
+ <div id="miModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="cerrarModal()">&times;</span>
         <h3>Resultados</h3>
         <p id="mensajeModal"></p>
     </div>
-  </div>
-
+ </div>
 
 </body>
 </html>

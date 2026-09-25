@@ -1,61 +1,45 @@
-//FUNCIÓN 1: EN DONDE SE VALIDARA EL CORREO ELECTRONICO
-//USANDO BOOLEAN
-function Correo(correo){
-   
-    //El cual responde con un booleano, si el texto tiene el formato correcto enotonces 
-    //se convierte en true y retorna la función.
-    const regular = /^[^\s@]+@[^\s@]+\.[^\s@]+$/ ;
+
+function validarCorreo(correo) {
+    const regular = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regular.test(correo);
 }
 
-//FUNCIÓN 2: EN DONDE SE VALIDARA QUE SOLO SE PUEDA INGRESAR LETRAS
-function Letras(texto) {
-    // Acepta letras mayúsculas, minúsculas, espacios y vocales acentuadas
+function soloLetras(texto) {
     const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
     return regex.test(texto);
 }
 
-//FUNCIÓN 3: EN DONDE SE VALIDA QUE SOLO SE INGRESE UNA CANTIDAD DE NUMEROS
 function validarLongitud(numero, maxLongitud) {
-    // Convertimos a string por si mandan un tipo number
     let textoNum = numero.toString();
     return textoNum.length <= maxLongitud;
 }
 
-
-//FUNCIÓN 4: CALCULO DE EDAD
 function calcularEdad(fechaNacimiento) {
     const hoy = new Date();
     const fechaNac = new Date(fechaNacimiento);
     let edad = hoy.getFullYear() - fechaNac.getFullYear();
     const mes = hoy.getMonth() - fechaNac.getMonth();
 
-    // Si el mes actual es menor al mes de nacimiento, o si es el mismo mes pero el día de hoy es menor, restamos un año
     if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
         edad--;
     }
     return edad;
 }
 
-//COMPROBAR SI LA PERSONA O USUARIO ES MYOR DE EDAD O NO
 
 function esMayorDeEdad(fechaNacimiento) {
     const edad = calcularEdad(fechaNacimiento);
     return edad >= 18;
 }
 
-// FUNCIÓN 5: VALIDACIÓN DE CONTRASEÑA TOMANDO EN CUENTA QUE SEA MINIMO DE 8 CARACTERES
-// TENDRA LETRAS (MAYUSCULAS y minusculas), NUMEROS, CARACTER ESPECIAL
 
 function validarPassword(password) {
-     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_\-+=])[A-Za-z\d@$!%*?&.#_\-+=]{8,}$/;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_\-+=])[A-Za-z\d@$!\%*?&.#_\-+=]{8,}$/;
     return regex.test(password);
 }
 
 
 
-
-//FUNCIÓN QUE GENERA UN FOLIO PARA EL TICKET UTILIZANDO EL NOMBRE DEL USUARIO
 
 function generarFolioTicket(nombreCliente) {
     let prefijo = "CLI";
@@ -66,83 +50,121 @@ function generarFolioTicket(nombreCliente) {
     return `TKT-${prefijo}-${aleatorio}`;
 }
 
+function truncarTexto(texto, limite) {
+    if (!texto) return "";
+    if (texto.length <= limite) return texto;
+    return texto.substring(0, limite).trim() + '...';
+}
 
 
-// FUNCIÓN PRINCIPAL DE PROCESAMIENTO
+
+
 function ProcesarFormulario() {
-    
     const nombre = document.getElementById('nombre').value;
     const apellidos = document.getElementById('apellidos').value;
     const fechaNacimiento = document.getElementById('fechaNacimiento').value;
     const correo = document.getElementById('correo').value; 
     const contraseña = document.getElementById('contraseña').value;
+    
+    // Labels de error
+    const msjNombre = document.getElementById('msjNombre');
+    const msjApellidos = document.getElementById('msjApellidos');
+    const msjFecha = document.getElementById('msjFecha');
+    const msjCorreo = document.getElementById('msjCorreo');
+    const msjPassword = document.getElementById('msjPassword');
 
+    // Limpiar errores 
+    if (msjNombre) msjNombre.textContent = '';
+    if (msjApellidos) msjApellidos.textContent = '';
+    if (msjFecha) msjFecha.textContent = '';
+    if (msjCorreo) msjCorreo.textContent = '';
+    if (msjPassword) msjPassword.textContent = '';
 
-    // Validaciones básicas
-    if (!Letras(nombre)) {
-        alert("El nombre solo debe contener letras.");
-        return;
+    let hayErrores = false;
+
+    // Validaciones con etiquetas label
+    if (!soloLetras(nombre)) {
+        if (msjNombre) msjNombre.textContent = 'Ingrese solo letras válidas.';
+        hayErrores = true;
     }
 
-    if (!Letras(apellidos)) {
-        alert("Los apellidos solo deben contener letras.");
-        return;
+    if (!soloLetras(apellidos)) {
+        if (msjApellidos) msjApellidos.textContent = 'Ingrese solo letras válidas.';
+        hayErrores = true;
     }
 
     if (!fechaNacimiento) {
-        alert("Por favor, seleccione su fecha de nacimiento.");
-        return;
+        if (msjFecha) msjFecha.textContent = 'Seleccione su fecha de nacimiento.';
+        hayErrores = true;
     }
 
-    // ¡Aquí entra en acción tu validación de correo!
-    if (!Correo(correo)) {
-        alert("El formato del correo no es válido. Ejemplo: ejemplo@gmail.com");
-        return;
+    if (!validarCorreo(correo)) {
+        if (msjCorreo) msjCorreo.textContent = 'Formato inválido (Ej: correo@dominio.com)';
+        hayErrores = true;
     }
 
     if (!validarPassword(contraseña)) {
-        alert("La contraseña no es válida. Debe ingresar 8 caracteres entre numeros, letras mayusculas o minusculas o simbolo especial.");
-        return;
+        if (msjPassword) msjPassword.textContent = 'Mín. 8 caracteres (Mayúscula, minúscula, número y símbolo).';
+        hayErrores = true;
     }
 
+    if (hayErrores) return;
 
-    // Ejecución de la lógica
+    // Ejecución de la lógica si todo es correcto
     const edad = calcularEdad(fechaNacimiento);
-    const mayorEdad = esMayorDeEdad(fechaNacimiento) ? "Es mayor de edad." : "Es menor de edad.";
+    const mayorEdad = esMayorDeEdad(fechaNacimiento) ? "Es mayor de edad" : "Es menor de edad";
     const folio = generarFolioTicket(nombre);
-   
 
-    // Identificación de los Inputs sin ID
+    const corte= truncarTexto(nombre, 3);
+    
+
     const listaInputs = document.querySelectorAll('#Registro input');
-    const inputFolio = listaInputs[3];
-   
-
+    const inputFolio = listaInputs[4]; // Posición del input de folio
     if (inputFolio) {
         inputFolio.value = folio;
     }
-   
 
-    // Despliegue de los resultados incluyendo el correo validado
+    // resultados
     const mensaje = `
+     <strong>Usuario:</strong> ${corte} ${apellidos} <br><br>
         <strong>Folio generado:</strong> ${folio} <br><br>
         <strong>Correo registrado:</strong> ${correo} <br><br>
-        <strong>Edad calculada:</strong> ${edad} años (${mayorEdad}) <br><br>
+        <strong>Edad calculada:</strong> ${edad} años (${mayorEdad}) <br>
        
     `;
     
     document.getElementById('mensajeModal').innerHTML = mensaje;
-    document.getElementById('miModal').style.display = "block";
+    document.getElementById('miModal').style.display = "flex";
 }
 
 function cerrarModal() {
     document.getElementById('miModal').style.display = "none";
 }
 
+// inicio de sesion
+function iniciarSesion() {
+    const correo = document.getElementById('correo').value;
+    const password = document.getElementById('password').value;
+    
+    const msjLoginCorreo = document.getElementById('msjLoginCorreo');
+    const msjLoginPassword = document.getElementById('msjLoginPassword');
 
-document.addEventListener('DOMContentLoaded', function() {
-    const botonRegistrar = document.querySelector('#Registro button');
-    if (botonRegistrar) {
-        botonRegistrar.removeAttribute('onclick'); // Limpiamos el texto plano previo
-        botonRegistrar.addEventListener('click', ProcesarFormulario); 
+    if (msjLoginCorreo) msjLoginCorreo.textContent = '';
+    if (msjLoginPassword) msjLoginPassword.textContent = '';
+
+    let error = false;
+
+    if (!validarCorreo(correo)) {
+        if (msjLoginCorreo) msjLoginCorreo.textContent = 'Correo no válido.';
+        error = true;
     }
-});
+
+    if (!validarPassword(password)) {
+        if (msjLoginPassword) msjLoginPassword.textContent = 'Contraseña incorrecta o no cumple los requisitos.';
+        error = true;
+    }
+
+    if (error) return;
+
+    alert("¡Credenciales válidas! Acceso concedido.");
+}

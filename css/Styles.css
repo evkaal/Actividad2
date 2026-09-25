@@ -1,105 +1,142 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #e0e4e8;
+    background: linear-gradient(135deg, #212b3a 0%, #51857c 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    color: #333;
 }
 
-/*Este es el diseño del contenedor principal*/
+/* Contenedor principal  */
 .contenedor {
     display: flex;
-    width: 700px;
-    max-width: 100%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-    overflow: hidden; /* permite que las esquinas salgan un poco redondeado */
+    width: 900px;
+    max-width: 95%;
+    background: #ffffff;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    border-radius: 9px;
+    overflow: hidden;
 }
 
-
+/* Panel izquierdo */
 .mitad-izquierdo {
-    background-color: #139a76;
+    background: linear-gradient(145deg, #139a76 0%, #0d6b52 100%);
     color: white;
-    width: 40%;
-    padding: 50px;
+    width: 38%;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    position: relative;
+    overflow: hidden;
 }
 
+.contenido-izq {
+    position: relative;
+    z-index: 2;
+}
 
 .mitad-izquierdo h2 {
-    font-size: 36px;
-    margin: 10px 0;
+    font-size: 32px;
+    margin: 0 0 15px 0;
+    letter-spacing: -0.5px;
 }
 
 .mitad-izquierdo p {
-    font-size: 18px;
-    color: #d1d4e8;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #e2f8f2;
+    margin: 0;
 }
 
 
+
+/* Mitad derecha  */
 .mitad-derecho {
-    background-color: #aa8bc6;
-    width: 60%;
-    padding: 40px;
+    background-color: #ffffff;
+    width: 62%;
+    padding: 45px;
+    box-sizing: border-box;
 }
 
 .encabezado-form {
     text-align: right;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    color: #6b7280;
 }
 
 .encabezado-form a {
-    color: #2c315c;
+    color: #139a76;
+    text-decoration: none;
+}
+
+.encabezado-form a:hover {
     text-decoration: underline;
 }
 
 .mitad-derecho h3 {
-    color: #2c315c;
+    color: #1f2937;
     font-size: 24px;
+    margin-top: 0;
     margin-bottom: 25px;
 }
 
-/* Acomodo de los inputs en 2 columnas */
+/* Rejilla de inputs */
 .grid-formulario {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas del mismo tamaño */
-    gap: 15px; /* Espacio entre los campos */
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.grupo {
+    display: flex;
+    flex-direction: column;
 }
 
 .grupo label {
-    display: block;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
-    color: black;
-    margin-bottom: 5px;
-
+    color: #4b5563;
+    margin-bottom: 6px;
+   
+    letter-spacing: 0.5px;
 }
 
+/* Estilo para los inputs */
 .grupo input {
     width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 14px;
+    padding: 12px 14px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
     box-sizing: border-box;
     font-family: inherit;
+    font-size: 14px;
+    color: #1f2937;
+    background-color: #f9fafb;
+    transition: all 0.2s ease-in-out;
+}
+
+.grupo input:focus {
+    outline: none;
+    border-color: #139a76;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(19, 154, 118, 0.1);
 }
 
 .grupo input[readonly] {
-    background-color: #b9ff99; 
-    color: #2c315c;
+    background-color: #f0fdf4; 
+    color: #166534;
+    border-color: #bbf7d0;
     font-weight: bold;
 }
 
 button {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background-color: #139a76;
     color: white;
     border: none;
@@ -107,61 +144,92 @@ button {
     font-weight: bold;
     margin-top: 25px;
     cursor: pointer;
-    border-radius: 14px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(19, 154, 118, 0.3);
+    transition: background-color 0.2s, transform 0.1s;
 }
 
 button:hover {
-    background-color: #1a1d3d;
+    background-color: #0d7c5f;
+}
+
+button:active {
+    transform: scale(0.99);
 }
 
 /* Ventana Modal */
 .modal {
     display: none; 
     position: fixed;
-    z-index: 10;
+    z-index: 100;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(17, 24, 39, 0.7);
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
     background-color: #fff;
-    margin: 10% auto;
-    padding: 25px;
-    width: 300px;
-    border-radius: 8px;
+    padding: 30px;
+    width: 340px;
+    max-width: 90%;
+    border-radius: 16px;
     text-align: left;
-    color: #2c315c;
+    color: #1f2937;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    margin: auto;
 }
 
 .close {
-    color: #aaa;
+    color: #9ca3af;
     float: right;
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
+    line-height: 1;
 }
 
 .close:hover {
-    color: red;
+    color: #ef4444;
 }
 
-/* Esto nos permitira mantener la pagina en modo responsive */
+.modal-content h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #111827;
+}
+
+.modal-content p {
+    font-size: 14px;
+    color: #4b5563;
+}
+
+/* Responsive */
 @media screen and (max-width: 768px) {
+    body {
+        align-items: stretch;
+        background: #ffffff;
+    }
     .contenedor {
-        flex-direction: column; 
-        border-radius: 14px;
-    }
-    .mitad-izquierdo, .mitad-derecho{
         width: 100%;
-        box-sizing: border-box;
-        padding: 30px;
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        flex-direction: column; 
     }
-    /*Con esto pasamos todo a una sola columa en celular*/
+    .mitad-izquierdo {
+        width: 100%;
+        padding: 25px;
+        min-height: auto;
+    }
+    .mitad-derecho {
+        width: 100%;
+        padding: 25px;
+    }
     .grid-formulario {
         grid-template-columns: 1fr; 
     }
 }
-
